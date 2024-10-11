@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HotelProject.Models.Home>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderImage1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderContent1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderImage2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderContent2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderImage3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SliderContent3)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderImage1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderContent1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderImage2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderContent2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderImage3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderContent3)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HomeID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HomeID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HomeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

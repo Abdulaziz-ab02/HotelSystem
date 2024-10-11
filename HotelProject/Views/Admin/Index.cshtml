@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <!-- New Statistics Section -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Hotel Name</th>
+                        <th scope="col">Available Rooms</th>
+                        <th scope="col">Booked Rooms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.HotelRoomData)
+                    {
+                        <tr>
+                            <td>@item.HotelName</td>
+                            <td>@item.AvailableRooms</td>
+                            <td>@item.BookedRooms</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card stat-box">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">@ViewBag.registeredUsers</h2>
+                        <p class="card-category">Registered Users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Hotels by Reservations Chart Section -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>Top Hotels by Reservations</h4>
+                <canvas id="topHotelsChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Parse the hotel reservation data passed from the controller
+    var topHotelsData = @Html.Raw(Json.Serialize(ViewBag.TopHotelsData));
+
+    var labels = topHotelsData.map(item => item.hotelName);
+    var counts = topHotelsData.map(item => item.reservationCount);
+
+    var ctx = document.getElementById('topHotelsChart').getContext('2d');
+    var topHotelsChart = new Chart(ctx, {
+        type: 'bar', // Bar chart type
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of Reservations',
+                data: counts,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

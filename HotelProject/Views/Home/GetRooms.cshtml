@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HotelProject.Models.Room>
+@{
+    ViewData["Title"] = "GetRooms";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1>GetRooms</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Floor</th>
+            <th>Price per Night</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.Roomnumber</td>
+                <td>@room.Roomtype</td>
+                <td>@room.Roomdescription</td>
+                <td>@room.Floor</td>
+                <td>@room.Pricepernight</td>
+                <td>
+                    <a href="@Url.Action("SetReservation", new { roomId = room.Roomid })" class="btn btn-primary">Book Now</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

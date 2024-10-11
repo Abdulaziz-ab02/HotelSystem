@@ -1,0 +1,55 @@
+﻿@model HotelProject.Models.Reservation
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservationdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reservationdate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Checkindate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Checkindate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Checkoutdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Checkoutdate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Totalprice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Totalprice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Roomid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Usersid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Reservationid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

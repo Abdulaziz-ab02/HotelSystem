@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HotelProject.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Testimonialdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                User Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contents)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Testimonialdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @item.Users.Firstname @item.Users.Lastname
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Testimonialsid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Testimonialsid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Testimonialsid">Delete</a>
+                </td>
+                <td>
+                    <form asp-action="ApproveTestimonial" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@item.Testimonialsid" />
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                    <form asp-action="DenyTestimonial" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@item.Testimonialsid" />
+                        <button type="submit" class="btn btn-danger">Deny</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

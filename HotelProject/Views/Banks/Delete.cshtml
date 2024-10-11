@@ -1,0 +1,47 @@
+﻿@model HotelProject.Models.Bank
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bank</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cardnumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cardnumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cvv)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cvv)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Expirydate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Expirydate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Bankid" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

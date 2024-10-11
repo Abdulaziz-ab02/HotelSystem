@@ -1,0 +1,43 @@
+﻿@model HotelProject.Models.AboutUs
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AboutUs</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LeftHeader)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LeftHeader)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RightHeader)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RightHeader)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Paragraph)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Paragraph)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AboutUsID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

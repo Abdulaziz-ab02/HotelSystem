@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title - Light Bootstrap Dashboard</title>
+
+    <!-- Favicon and Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="~/AdminAssets/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/AdminAssets/assets/img/favicon.ico">
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- CSS Files -->
+    <link href="~/AdminAssets/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/AdminAssets/assets/css/light-bootstrap-dashboard.css?v=2.0.0" rel="stylesheet">
+
+    <!-- Demo CSS (optional) -->
+    <link href="~/AdminAssets/assets/css/demo.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-image="~/AdminAssets/assets/img/sidebar-5.jpg">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="http://www.creative-tim.com" class="simple-text">
+                        Creative Tim
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                            <i class="nc-icon nc-chart-pie-35"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Users" asp-action="Index">
+                            <i class="nc-icon nc-circle-09"></i>
+                            <p>Registerd Users</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Hotels" asp-action="Index">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Hotels</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Rooms" asp-action="Index">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>Room</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Cities" asp-action="Index">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Cities</p>
+                        </a>
+                    </li>   
+                    <li>
+                        <a class="nav-link" asp-controller="Facilities" asp-action="Index">
+                            <i class="nc-icon nc-pin-3"></i>
+                            <p>Facilities</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Testimonials" asp-action="Index">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Testimonials</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Hotelfacilities" asp-action="Index">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Hotelfacilities</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Admin" asp-action="Search">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Search</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="Homes" asp-action="Index">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>HomePage</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="HeaderFooters" asp-action="Index">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Logo&Footer</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="ContactUs" asp-action="Index">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>ContactUs</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="AboutUs" asp-action="Index">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>AboutUs</p>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg" color-on-scroll="500">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#pablo">Dashboard</a>
+                    
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="navbar-nav mr-auto">
+                            
+                         
+                            
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="MyProfile" asp-controller="Home">
+                                    <span class="no-icon">Account</span>
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- JS Files -->
+    <script src="~/AdminAssets/assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="~/AdminAssets/assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="~/AdminAssets/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/AdminAssets/assets/js/plugins/bootstrap-switch.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script src="~/AdminAssets/assets/js/plugins/chartist.min.js"></script>
+    <script src="~/AdminAssets/assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="~/AdminAssets/assets/js/light-bootstrap-dashboard.js?v=2.0.0" type="text/javascript"></script>
+    <script src="~/AdminAssets/assets/js/demo.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            demo.initDashboardPageCharts();
+            demo.showNotification();
+        });
+    </script>
+</body>
+</html>

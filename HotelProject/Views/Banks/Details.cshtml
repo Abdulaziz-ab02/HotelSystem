@@ -1,0 +1,44 @@
+﻿@model HotelProject.Models.Bank
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bank</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cardnumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cardnumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cvv)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cvv)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Expirydate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Expirydate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Bankid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,49 @@
+﻿@model HotelProject.Models.Hotelfacility
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .form-check-input {
+        display: inline-block;
+        width: auto;
+        margin-right: 10px;
+    }
+</style>
+
+<h2>Create</h2>
+
+<h4>Hotelfacility</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Hotelid" class="control-label">Hotel</label>
+                <select asp-for="Hotelid" class="form-control" asp-items="ViewBag.Hotelid"></select>
+            </div>
+
+            <div class="form-group">
+                <label>Facilities</label>
+                @foreach (var facility in ViewBag.Facilities as List<HotelProject.Models.Facility>)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input danger" type="checkbox" name="SelectedFacilities" value="@facility.Facilitiesid" id="facility_@facility.Facilitiesid" />
+                        <label class="form-check-label" for="facility_@facility.Facilitiesid">@facility.Facilityname</label>
+                    </div>
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1>Payment</h1>
+
+<!-- Display reservation details -->
+<div>
+    <p>Room ID: @ViewBag.RoomId</p>
+    <p>Check-In Date: @ViewBag.CheckinDate.ToShortDateString()</p>
+    <p>Check-Out Date: @ViewBag.CheckoutDate.ToShortDateString()</p>
+    <p>Total Price: @ViewBag.TotalPrice</p>
+</div>
+
+<!-- Payment Form -->
+<form asp-action="Payment" method="post">
+    <h2>Payment Information</h2>
+    <div class="form-group">
+        <label for="cardholderName">Cardholder Name</label>
+        <input type="text" id="cardholderName" name="cardholderName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber" class="form-control" placeholder="1234 5678 9101 1121" required />
+    </div>
+    <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv" class="form-control" placeholder="123" required />
+    </div>
+    <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input type="date" id="expiryDate" name="expiryDate" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirm Payment</button>
+</form>

@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "ContactUs";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div id="page">
+    <section class="image-head-wrapper" style="background-image: url('@Url.Content("~/Images/PagesManagement/HomePhoto/" + ViewBag.Image)');">
+        <div class="inner-wrapper">
+            <h1>Contact Us</h1>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+
+    <section class="contact-block">
+        <div class="container">
+            <div class="col-md-6 contact-left-block">
+                <h3><span>Contact </span>Us</h3>
+                <p class="text-left">@ViewBag.Paragraph</p> <!-- Fixed typo: ViewBag.Pargraph to ViewBag.Paragraph -->
+                <p class="text-right">@ViewBag.Address <i class="fa fa-map-marker fa-lg"></i></p>
+                <p class="text-right"><a href="tel:@ViewBag.PhoneNumber">@ViewBag.PhoneNumber <i class="fa fa-phone fa-lg"></i></a></p>
+                <p class="text-right"><a href="mailto:@ViewBag.Email"> @ViewBag.Email <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-md-6 contact-form">
+                <h3>Send a <span>Message</span></h3>
+                <form asp-action="ContactUs" method="post">
+                    <input type="text" class="form-control" name="Name" placeholder="Name" required="">
+                    <input type="email" class="form-control" name="Email" placeholder="Email" required="">
+                    <textarea class="form-control" name="Message" placeholder="Message Here...." required=""></textarea>
+                    <input type="submit" class="submit-btn" value="Submit">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+
+    <!---map--->
+    <section class="offspace-70">
+        <div class="map">
+            <div class="container">
+                <iframe src="@ViewBag.Iframe" frameborder="0" style="border:0; width: 100%; height: 400px" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+</div>

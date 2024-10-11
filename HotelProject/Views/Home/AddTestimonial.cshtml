@@ -1,0 +1,37 @@
+﻿@model HotelProject.Models.Testimonial
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+    <div class="container">
+        <h2 class="text-center">Add Testimonial</h2>
+        <form asp-action="AddTestimonial" asp-controller="Home" method="post" class="form-horizontal">
+
+            <!-- Testimonial Contents -->
+            <div class="form-group">
+                <label asp-for="Contents"  class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <textarea asp-for="Contents" class="form-control" rows="5" placeholder="Write your testimonial here..." required></textarea>
+                    <span asp-validation-for="Contents" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Rating -->
+            <div class="form-group">
+                <label asp-for="Rating" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Rating" type="number" class="form-control" min="1" max="5" step="0.1" placeholder="Enter rating (optional)">
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit Testimonial</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+

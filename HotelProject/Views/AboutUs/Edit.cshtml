@@ -1,0 +1,47 @@
+﻿@model HotelProject.Models.AboutUs
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>AboutUs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AboutUsID" />
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeftHeader" class="control-label"></label>
+                <input asp-for="LeftHeader" class="form-control" />
+                <span asp-validation-for="LeftHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RightHeader" class="control-label"></label>
+                <input asp-for="RightHeader" class="form-control" />
+                <span asp-validation-for="RightHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paragraph" class="control-label"></label>
+                <input asp-for="Paragraph" class="form-control" />
+                <span asp-validation-for="Paragraph" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

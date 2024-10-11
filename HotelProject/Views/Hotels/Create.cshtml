@@ -1,0 +1,65 @@
+﻿@model HotelProject.Models.Hotel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Hotel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Hotelname" class="control-label"></label>
+                <input asp-for="Hotelname" class="form-control" />
+                <span asp-validation-for="Hotelname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hoteladress" class="control-label"></label>
+                <input asp-for="Hoteladress" class="form-control" />
+                <span asp-validation-for="Hoteladress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hotelphone" class="control-label"></label>
+                <input asp-for="Hotelphone" class="form-control" />
+                <span asp-validation-for="Hotelphone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hotelemail" class="control-label"></label>
+                <input asp-for="Hotelemail" class="form-control" />
+                <span asp-validation-for="Hotelemail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hoteldescription" class="control-label"></label>
+                <input asp-for="Hoteldescription" class="form-control" />
+                <span asp-validation-for="Hoteldescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cityid" class="control-label"></label>
+                <select asp-for="Cityid" class ="form-control" asp-items="ViewBag.Cityid"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hotelmapiframe" class="control-label"></label>
+                <input asp-for="Hotelmapiframe" class="form-control" />
+                <span asp-validation-for="Hotelmapiframe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HotelProject.Models.Reservation>
+
+@{
+    ViewData["Title"] = "My Reservations";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1>My Reservations</h1>
+
+@if (Model != null && Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>Room Name</th>
+                    <th>Check-In Date</th>
+                    <th>Check-Out Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservation in Model)
+                {
+                    <tr>
+                        <td>@reservation.Reservationid</td>
+                        <td>@reservation.Room.Roomtype</td>
+                        <td>@reservation.Checkindate.ToString("yyyy-MM-dd")</td>
+                        <td>@reservation.Checkoutdate.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>You have no reservations.</p>
+}

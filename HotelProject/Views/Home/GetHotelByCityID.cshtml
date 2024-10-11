@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Hotel>
+@{
+    ViewData["Title"] = "GetHotelByCityID";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<head>
+    <style>
+        .card-body {
+            font-size: 1.2rem;
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .card-img-top {
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .embed-responsive-16by9 {
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .embed-responsive-16by9 iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+        .facilities-list {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+            .facilities-list li {
+                margin-bottom: 5px;
+            }
+
+        /* Search bar styling */
+        .search-bar {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+        function filterHotels() {
+            // Get the search query
+            var query = document.getElementById("hotelSearch").value.toLowerCase();
+
+            // Get all hotel cards
+            var hotels = document.getElementsByClassName("hotel-card");
+
+            // Loop through the hotels and filter based on the search query
+            for (var i = 0; i < hotels.length; i++) {
+                var hotelName = hotels[i].getElementsByClassName("hotel-name")[0].innerText.toLowerCase();
+
+                // Show or hide hotel based on whether the name includes the search query
+                if (hotelName.includes(query)) {
+                    hotels[i].style.display = "block"; // Show the card
+                } else {
+                    hotels[i].style.display = "none"; // Hide the card
+                }
+            }
+        }
+    </script>
+</head>
+
+<div class="container">
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="hotelSearch" class="form-control" placeholder="Search hotels by name..." onkeyup="filterHotels()" />
+    </div>
+
+    <div class="row">
+        @foreach (var hotel in Model)
+        {
+            <div class="col-md-6 col-sm-12 hotel-card">
+                <div class="card">
+                    <!-- Hotel Image -->
+                    <img class="img-responsive" src="@Url.Content("~/Images/Hotels/" + hotel.Hotelimage)" alt="@hotel.Hotelname">
+
+                    <!-- Hotel Details -->
+                    <div class="card-body">
+                        <h5 class="card-title hotel-name text-danger font-weight-bold">@hotel.Hotelname</h5>
+                        <p class="card-text">
+                            <strong>Address:</strong> @hotel.Hoteladress <br />
+                            <strong>Phone:</strong> @hotel.Hotelphone <br />
+                            <strong>Email:</strong> @hotel.Hotelemail <br />
+                            <strong>Description:</strong> @hotel.Hoteldescription
+                        </p>
+
+                        <!-- Hotel Facilities -->
+                        <div class="facilities-list">
+                            <h6>Facilities:</h6>
+                            <ul>
+                                @foreach (var facility in hotel.Hotelfacilities.Select(hf => hf.Facility))
+                                {
+                                    <li>@facility.Facilityname</li>
+                                }
+                            </ul>
+                        </div>
+
+                        <!-- Hotel Location Map -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            @if (!string.IsNullOrEmpty(hotel.Hotelmapiframe))
+                            {
+                                <iframe class="embed-responsive-item"
+                                        src="@hotel.Hotelmapiframe"
+                                        allowfullscreen
+                                        style="border:0;">
+                                </iframe>
+                            }
+                            else
+                            {
+                                <p>No map available for this hotel.</p>
+                            }
+                        </div>
+
+                        <!-- Book Now Button -->
+                        <a asp-action="GetRooms" asp-route-id="@hotel.Hotelid" class="btn btn-danger btn-block">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model HotelProject.Models.Hotelfacility
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hotelfacility</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Facility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Facility.Facilitiesid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Hotel.Hotelid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.HotelFacilitiesid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

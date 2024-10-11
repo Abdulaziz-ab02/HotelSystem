@@ -1,0 +1,26 @@
+﻿@model HotelProject.Models.Reservation
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1>Set Reservation</h1>
+
+<form asp-action="SetReservation" method="post">
+    <input type="hidden" name="Roomid" value="@Model.Roomid" />
+
+    <div class="form-group">
+        <label for="checkInDate">Check-In Date</label>
+        <input type="date" id="checkInDate" name="Checkindate" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="checkOutDate">Check-Out Date</label>
+        <input type="date" id="checkOutDate" name="Checkoutdate" class="form-control" required />
+    </div>
+
+   
+
+   
+
+    <button type="submit" class="btn btn-primary">Confirm Reservation</button>
+</form>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<HotelProject.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dateofbirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Userimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Userlogins)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @item.Dateofbirth?.ToString("yyyy-MM-dd")  <!-- Format DateTime to "yyyy-MM-dd" -->
+                </td>
+                <td>
+                    <img src=@Url.Content("~/Images/Users/" + item.Userimage) asp-append-version ="true" style="border-radius:20%;"
+                        width="100" height="100" /> 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Userlogins.Userloginsid)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Usersid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Usersid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Usersid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

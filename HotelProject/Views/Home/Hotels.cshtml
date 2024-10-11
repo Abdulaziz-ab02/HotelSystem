@@ -1,0 +1,53 @@
+﻿@model IEnumerable<City>
+@{
+    ViewData["Title"] = "Hotels";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<head>
+    <style>
+        .city-square {
+            width: 100%;
+            padding-bottom: 100%; /* This keeps the square shape */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .city-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .city-name {
+            font-size: 1.5em;
+            margin: 0;
+        }
+    </style>
+</head>
+<div class="container">
+    <div class="row">
+        <!-- Example for one city -->
+        <h3 style="margin-bottom: 20px;">Please choose the city where you want to stay</h3>
+
+        @foreach(var item in Model)
+        {
+            <div class="col-md-3">
+                <a asp-action="GetHotelByCityID" asp-route-id="@item.Cityid">
+                    <div class="city-square" style="background-image: url('@Url.Content("~/Images/Cities/" + item.Cityimage)');">
+                    <div class="city-overlay">
+                        <h3 class="city-name">@item.Cityname</h3>
+                    </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

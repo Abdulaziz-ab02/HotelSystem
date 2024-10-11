@@ -1,0 +1,117 @@
+﻿@model HotelProject.Models.User
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/LoginAndRegister/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/LoginAndRegister/css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/LoginAndRegister/css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="~/LoginAndRegister/css/style.css">
+
+    <title>Register</title>
+</head>
+<body>
+    <div class="d-lg-flex half">
+        <div class="bg order-1 order-md-2" style="background-image: url('@Url.Content("~/LoginAndRegister/images/bg_2.jpg")');"></div>
+        <div class="contents order-2 order-md-1">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <h3>Register to <strong>Your Website</strong></h3>
+                        <p class="mb-4">Please fill in your details to create an account.</p>
+
+                        @if (ViewBag.HasAccount == true)
+                        {
+                            <div class="alert alert-info" role="alert">
+                                You already have an account. Please <a href="@Url.Action("Login", "LoginsAndRegister")">login here</a>.
+                            </div>
+                        }
+                        else
+                        {
+                            <form asp-action="Register" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <!-- First Name -->
+                                    <div class="col-md-6 form-group first">
+                                        <label for="Firstname">First Name</label>
+                                        <input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="First Name" required />
+                                    </div>
+
+                                    <!-- Last Name -->
+                                    <div class="col-md-6 form-group">
+                                        <label for="Lastname">Last Name</label>
+                                        <input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Last Name" required />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Email -->
+                                    <div class="col-md-6 form-group">
+                                        <label for="Email">Email</label>
+                                        <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" required />
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="col-md-6 form-group">
+                                        <label for="Phone">Phone</label>
+                                        <input type="text" class="form-control" id="Phone" name="Phone" placeholder="Phone Number" required />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Date of Birth -->
+                                    <div class="col-md-6 form-group">
+                                        <label for="Dateofbirth">Date of Birth</label>
+                                        <input type="date" class="form-control" id="Dateofbirth" name="Dateofbirth" />
+                                    </div>
+
+                                    <!-- Profile Image -->
+                                    <div class="col-md-6 form-group">
+                                        <label for="ImageFile">Profile Image</label>
+                                        <input type="file" class="form-control" id="ImageFile" name="ImageFile" accept="image/*" required />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Username -->
+                                    <div class="col-md-6 form-group">
+                                        <label for="UserName">Username</label>
+                                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Username" required />
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="col-md-6 form-group last mb-3">
+                                        <label for="PasswordHash">Password</label>
+                                        <input type="password" class="form-control" id="PasswordHash" name="PasswordHash" placeholder="Password" required />
+                                    </div>
+                                </div>
+
+                                <input type="submit" value="Register" class="btn btn-block btn-primary">
+                            </form>
+                        }
+                        <h6 style="color:red">@ViewBag.UsernameMessage</h6>
+                        <div class="mt-3 text-center">
+                            <p>Already have an account? <a href="@Url.Action("Login", "LoginsAndRegister")">Login here</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/LoginAndRegister/js/jquery-3.3.1.min.js"></script>
+    <script src="~/LoginAndRegister/js/popper.min.js"></script>
+    <script src="~/LoginAndRegister/js/bootstrap.min.js"></script>
+    <script src="~/LoginAndRegister/js/main.js"></script>
+</body>
+</html>

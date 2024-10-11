@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+</head>
+
+<h1>Search</h1>
+
+<div class="row">
+    <div class="col-6">
+        <form action="Search" method="post">
+            <input type="date" class="form-control" name="startDate" placeholder="Start Date">
+            <input type="date" class="form-control" name="endDate" placeholder="End Date">
+            <button type="submit" class="btn btn-dark">Search</button>
+        </form>
+    </div>
+</div>
+
+<table class="table" id="search">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>PhoneNumber</th>
+            <th>RoomNumber</th>
+            <th>PricePerNight</th>
+            <th>HotelName</th>
+            <th>City</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Reservation Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.Firstname</td>
+                <td>@item.User.Lastname</td>
+                <td>@item.User.Phone</td>
+                <td>@item.Room.Roomnumber</td>
+                <td>@item.Room.Pricepernight</td>
+                <td>@item.Room.Hotel.Hotelname</td>
+                <td>@item.Room.Hotel.City.Cityname</td>
+                <td>@item.Checkindate.Date</td>
+                <td>@item.Checkoutdate.Date</td>
+                <td>@item.Reservationdate.Date</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+
+<script>
+    $(document).ready(function () {
+        $('#search').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>

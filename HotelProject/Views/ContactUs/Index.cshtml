@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HotelProject.Models.ContactUs>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paragraph)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    <img src=@Url.Content("~/Images/PagesManagement/HomePhoto/" + item.ContactImage)
+                         asp-append-version="true" style="border-radius:20%;"
+                         width="100" height="100" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paragraph)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+           
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ContactUsID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContactUsID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContactUsID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

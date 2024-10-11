@@ -1,0 +1,62 @@
+﻿@model HotelProject.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Usersid" />
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dateofbirth" class="control-label"></label>
+                <input asp-for="Dateofbirth" class="form-control" />
+                <span asp-validation-for="Dateofbirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Userloginsid" class="control-label"></label>
+                <select asp-for="Userloginsid" class="form-control" asp-items="ViewBag.Userloginsid"></select>
+                <span asp-validation-for="Userloginsid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Userimage" class="control-label"></label>
+                <input asp-for="Userimage" class="form-control" />
+                <span asp-validation-for="Userimage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
